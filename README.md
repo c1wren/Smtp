@@ -21,7 +21,7 @@ Features:
 - [x] STARTTLS support
 - [x] Multiple recipients & CC
 - [x] Reply to
-- [ ] BCC fields
+- [x] BCC fields
 - [ ] Multiple emails sent at the same time
 
 ## Getting started

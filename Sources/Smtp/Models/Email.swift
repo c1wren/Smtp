@@ -54,6 +54,11 @@ extension Email {
             let ccAddresses = cc.map { self.formatMIME(emailAddress: $0) }.joined(separator: ", ")
             out.writeString("Cc: \(ccAddresses)\r\n")
         }
+        
+        if let bcc = self.bcc {
+            let bccAddresses = bcc.map { self.formatMIME(emailAddress: $0) }.joined(separator: ", ")
+            out.writeString("Bcc: \(bccAddresses)\r\n")
+        }
 
         if let replyTo = self.replyTo {
             out.writeString("Reply-to: \(self.formatMIME(emailAddress:replyTo))\r\n")
@@ -76,7 +81,6 @@ extension Email {
         }
 
         if self.attachments.count > 0 {
-
             if self.isBodyHtml {
                 out.writeString("--\(boundary)\r\n")
                 out.writeString("Content-Type: text/html; charset=\"UTF-8\"\r\n\r\n")
